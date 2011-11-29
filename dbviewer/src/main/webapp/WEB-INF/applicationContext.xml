@@ -51,4 +51,7 @@
 		</bean>
 	</util:list>
 
+	<bean  class="com.variation4.dbviewer.action.SelectAction">
+		<property name="daoList" ref="daoList" />
+	</bean>
 </beans>

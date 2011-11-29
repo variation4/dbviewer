@@ -1,13 +1,31 @@
-package com.variation4.dbviewer;
+package com.variation4.dbviewer.action;
 
-class ApplicationMain extends AbstractApplication {
+import java.util.List;
 
-	public static void main(String[] args) {
-		new ApplicationMain().execute();
+import com.opensymphony.xwork2.ActionSupport;
+import com.variation4.dbviewer.Command;
+import com.variation4.dbviewer.Dao;
+
+public class SelectAction extends ActionSupport {
+
+	private static final long serialVersionUID = 1L;
+
+	private List<Dao> daoList;
+
+	public void setDaoList(List<Dao> daoList) {
+		this.daoList = daoList;
 	}
 
 	@Override
-	public void doScript(Dao dao) {
+	public String execute() throws Exception {
+		Dao dao = daoList.get(0);
+
+		doScript(dao);
+
+		return super.execute();
+	}
+
+	private void doScript(Dao dao) {
 		Command command1 = new Command("カテゴリ", "select * from  jam_users");
 		command1.execute(dao);
 
@@ -22,5 +40,4 @@ class ApplicationMain extends AbstractApplication {
 		command3.execute(dao);
 
 	}
-
 }

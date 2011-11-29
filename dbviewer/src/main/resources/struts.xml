@@ -8,7 +8,7 @@
 	<constant name="struts.ui.theme" value="simple" />
 
 	<package name="search" namespace="/" extends="struts-default">
-	<action name="menu" class="com.variation4.dbviewer.action.FooAction">
+	<action name="select" class="com.variation4.dbviewer.action.SelectAction">
 		<result>/WEB-INF/jsp/foo.jsp</result>
 	</action>
   </package>
