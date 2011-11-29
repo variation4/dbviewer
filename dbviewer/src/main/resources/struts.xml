@@ -9,7 +9,7 @@
 
 	<package name="search" namespace="/" extends="struts-default">
 	<action name="select" class="com.variation4.dbviewer.action.SelectAction">
-		<result>/WEB-INF/jsp/foo.jsp</result>
+		<result>/WEB-INF/jsp/select.jsp</result>
 	</action>
   </package>
 </struts>

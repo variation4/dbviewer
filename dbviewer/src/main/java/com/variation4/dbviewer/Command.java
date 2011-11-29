@@ -1,6 +1,8 @@
 package com.variation4.dbviewer;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 
 public class Command {
 	private String name;
@@ -10,6 +12,14 @@ public class Command {
 	public Command(String name, String sql) {
 		this.name = name;
 		this.sql = sql;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public String getSql() {
+		return sql;
 	}
 
 	public void execute(Dao dao) {
@@ -25,7 +35,7 @@ public class Command {
 		if (result == null || result.isEmpty()) {
 			return null;
 		}
-		return result.get(0).get(colName.toLowerCase());
+		return result.get(0).get(colName.toUpperCase());
 	}
 
 	public String getLastVal(String colName) {
@@ -33,6 +43,18 @@ public class Command {
 			return null;
 		}
 
-		return result.get(result.size() - 1).get(colName.toLowerCase());
+		return result.get(result.size() - 1).get(colName.toUpperCase());
 	}
+
+	public Set<String> getHeaders() {
+		if (result == null || result.isEmpty()) {
+			return Collections.emptySet();
+		}
+		return result.get(0).keySet();
+	}
+
+	public List<DbRecord> getResult() {
+		return result;
+	}
+
 }
