@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+                           http://www.springframework.org/schema/context
+                           http://www.springframework.org/schema/context/spring-context-2.5.xsd
+                           http://www.springframework.org/schema/aop
+                           http://www.springframework.org/schema/aop/spring-aop-2.0.xsd
+                           http://www.springframework.org/schema/util
+                           http://www.springframework.org/schema/util/spring-util-2.5.xsd">
+
+	<context:annotation-config/>
+
+	<!-- properties file -->
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<!--
+				jdbc1.driverClassName=com.mysql.jdbc.Driver
+				jdbc1.url=jdbc:mysql://localhost/jamwiki
+				jdbc1.username=xxxx
+				jdbc1.password=xxxx
+
+				jdbc2.driverClassName=oracle.jdbc.OracleDriver
+				jdbc2.url=jdbc:oracle:thin:@[HOST]:1521:[SID]
+				jdbc2.username=xxxx
+				jdbc2.password=xxxx
+				-->
+				<!--  <value>classpath:db.properties</value> -->
+				<value>file:c:/usr/conf/db.properties</value>
+			</list>
+		</property>
+	</bean>
+
+	<!-- database -->
+	<bean id="dataSource1" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="${jdbc1.driverClassName}" />
+		<property name="url" value="${jdbc1.url}" />
+		<property name="username" value="${jdbc1.username}" />
+		<property name="password" value="${jdbc1.password}" />
+	</bean>
+
+	<util:list id="daoList">
+		<bean  class="com.variation4.dbviewer.Dao">
+			<property name="caption" value="データベース1" />
+			<property name="dataSource" ref="dataSource1" />
+		</bean>
+	</util:list>
+
+</beans>
