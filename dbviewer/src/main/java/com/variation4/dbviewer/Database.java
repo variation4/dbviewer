@@ -14,7 +14,7 @@ import java.util.List;
 import org.springframework.jdbc.core.simple.ParameterizedRowMapper;
 import org.springframework.jdbc.core.simple.SimpleJdbcDaoSupport;
 
-public class Dao extends SimpleJdbcDaoSupport {
+public class Database extends SimpleJdbcDaoSupport {
 
 	private static final DateFormat FORMATE = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss.SSS");
 

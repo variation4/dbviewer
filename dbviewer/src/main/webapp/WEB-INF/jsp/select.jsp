@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 <STYLE type="text/css">
 body {
-  font-size: small;
+  font-size: 100%;
 }
 
 table {
@@ -40,9 +40,17 @@ td {
 </STYLE>
 </head>
 <body>
+
+<s:if test="%{commandList.isEmpty()}">
+<s:form action="select" method="get">
+	<s:submit action="query" />
+</s:form>
+</s:if>
+<s:else>
 	<s:iterator value="commandList" var="command" status="comsts">
 		<span class="command-name"><s:property value="%{name}" /></span><br />
 		<span><s:property value="%{sql}" /></span><br />
+		<span style="font-size:65%;"><s:property value="%{dbCaption}" /></span><br />
 		<s:if test="%{#command.getResult().isEmpty()}">
 			<tr>
 				<td>
@@ -70,5 +78,6 @@ td {
 			<br />
 		</s:else>
 	</s:iterator>
+</s:else>
 </body>
 </html>

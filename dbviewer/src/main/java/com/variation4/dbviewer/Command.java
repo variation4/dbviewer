@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Set;
 
 public class Command {
+	private String dbCaption;
 	private String name;
 	private String sql;
 	private List<DbRecord> result;
@@ -12,6 +13,10 @@ public class Command {
 	public Command(String name, String sql) {
 		this.name = name;
 		this.sql = sql;
+	}
+
+	public String getDbCaption() {
+		return dbCaption;
 	}
 
 	public String getName() {
@@ -22,11 +27,12 @@ public class Command {
 		return sql;
 	}
 
-	public void execute(Dao dao) {
+	public void execute(Database database) {
+		dbCaption = database.getCaption();
 		OutPut.output("");
 		OutPut.output(sql);
 		OutPut.output(name);
-		result = dao.query(sql);
+		result = database.query(sql);
 		OutPut.outputHead(result);
 		OutPut.outputData(result);
 	}

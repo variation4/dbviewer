@@ -44,14 +44,14 @@
 		<property name="password" value="${jdbc1.password}" />
 	</bean>
 
-	<util:list id="daoList">
-		<bean  class="com.variation4.dbviewer.Dao">
+	<util:list id="databaseList">
+		<bean  class="com.variation4.dbviewer.Database">
 			<property name="caption" value="データベース1" />
 			<property name="dataSource" ref="dataSource1" />
 		</bean>
 	</util:list>
 
 	<bean  class="com.variation4.dbviewer.action.SelectAction">
-		<property name="daoList" ref="daoList" />
+		<property name="databaseList" ref="databaseList" />
 	</bean>
 </beans>

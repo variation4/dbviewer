@@ -11,5 +11,9 @@
 	<action name="select" class="com.variation4.dbviewer.action.SelectAction">
 		<result>/WEB-INF/jsp/select.jsp</result>
 	</action>
+	<action name="query" class="com.variation4.dbviewer.action.SelectAction" method="query">
+		<result>/WEB-INF/jsp/select.jsp</result>
+	</action>
+
   </package>
 </struts>
