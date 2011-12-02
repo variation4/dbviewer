@@ -45,13 +45,19 @@
 	</bean>
 
 	<util:list id="databaseList">
-		<bean  class="com.variation4.dbviewer.Database">
+		<bean class="com.variation4.dbviewer.Database">
 			<property name="caption" value="データベース1" />
 			<property name="dataSource" ref="dataSource1" />
 		</bean>
 	</util:list>
 
+	<util:list id="scriptList">
+		<bean class="sample.SampleScript1" />
+		<bean class="sample.SampleScript2" />
+	</util:list>
+
 	<bean  class="com.variation4.dbviewer.action.SelectAction">
 		<property name="databaseList" ref="databaseList" />
+		<property name="scriptList" ref="scriptList" />
 	</bean>
 </beans>

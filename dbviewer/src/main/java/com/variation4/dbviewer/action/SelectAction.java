@@ -23,7 +23,9 @@ public class SelectAction extends ActionSupport {
 	/** DIフィールド */
 	private List<Database> databaseList;
 
-	private List<Script> scriptList = new ArrayList<Script>();
+	/** DIフィールド */
+	private List<Script> scriptList;
+
 	private String scriptId;
 
 	private List<Command> commandList = new ArrayList<Command>();
@@ -38,8 +40,14 @@ public class SelectAction extends ActionSupport {
 		return databaseList.get(index);
 	}
 
+	/** DIフィールド */
 	public List<Script> getScriptList() {
 		return scriptList;
+	}
+
+	/** DIフィールド */
+	public void setScriptList(List<Script> scriptList) {
+		this.scriptList = scriptList;
 	}
 
 	public String getScriptId() {
@@ -61,8 +69,6 @@ public class SelectAction extends ActionSupport {
 	@Override
 	public String execute() {
 		System.out.println("call::execute()");
-		scriptList.add(new SampleScript1());
-		scriptList.add(new SampleScript2());
 		return SUCCESS;
 	}
 

@@ -1,4 +1,4 @@
-package com.variation4.dbviewer.action;
+package sample;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,6 +6,7 @@ import java.util.Map;
 
 import com.variation4.dbviewer.Command;
 import com.variation4.dbviewer.Database;
+import com.variation4.dbviewer.action.Script;
 
 public class SampleScript2 implements Script {
 
