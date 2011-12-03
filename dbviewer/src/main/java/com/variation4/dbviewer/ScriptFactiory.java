@@ -6,13 +6,10 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import sample.script.SampleScript1;
-
 import com.variation4.util.ClassUtils;
 
 public class ScriptFactiory {
 	private final static String METHOD_NAME = "getScriptList";
-	SampleScript1 sp = null;
 
 	/**
 	 * packageName直下でScriptHolderアノテーションが付けられた全クラスを返します。
