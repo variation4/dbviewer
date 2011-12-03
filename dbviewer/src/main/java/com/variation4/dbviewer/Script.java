@@ -1,10 +1,8 @@
-package com.variation4.dbviewer.action;
+package com.variation4.dbviewer;
 
 import java.util.List;
 import java.util.Map;
 
-import com.variation4.dbviewer.Command;
-import com.variation4.dbviewer.Database;
 
 public interface Script {
 	public String getScriptId();

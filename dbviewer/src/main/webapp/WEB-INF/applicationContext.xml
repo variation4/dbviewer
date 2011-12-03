@@ -51,13 +51,12 @@
 		</bean>
 	</util:list>
 
-	<util:list id="scriptList">
-		<bean class="sample.SampleScript1" />
-		<bean class="sample.SampleScript2" />
+	<util:list id="scriptHolderList">
+		<value>sample.script.AllScripts</value>
 	</util:list>
 
-	<bean  class="com.variation4.dbviewer.action.SelectAction">
+	<bean class="com.variation4.dbviewer.action.SelectAction">
 		<property name="databaseList" ref="databaseList" />
-		<property name="scriptList" ref="scriptList" />
+		<property name="scriptHolderList" ref="scriptHolderList" />
 	</bean>
 </beans>

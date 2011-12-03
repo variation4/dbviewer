@@ -57,6 +57,9 @@ td {
 </s:form>
 <hr />
 </s:iterator>
+<s:if test="%{scriptList.isEmpty()}">
+	スクリプト定義なし
+</s:if>
 
 </s:if>
 <s:else>

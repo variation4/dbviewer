@@ -1,4 +1,4 @@
-package sample;
+package sample.script;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,18 +6,14 @@ import java.util.Map;
 
 import com.variation4.dbviewer.Command;
 import com.variation4.dbviewer.Database;
-import com.variation4.dbviewer.action.Script;
+import com.variation4.dbviewer.ScriptHelper;
+import com.variation4.dbviewer.ScriptHolder;
 
-public class SampleScript2 implements Script {
+@ScriptHolder
+public class SampleScript2 extends ScriptHelper {
 
-	@Override
-	public String getScriptId() {
-		return this.getClass().getName();
-	}
-
-	@Override
-	public String getScriptCaption() {
-		return "サンプルスクリプト2";
+	public SampleScript2() {
+		super("サンプルスクリプト2");
 	}
 
 	@Override

@@ -14,6 +14,8 @@ import org.apache.struts2.ServletActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.variation4.dbviewer.Command;
 import com.variation4.dbviewer.Database;
+import com.variation4.dbviewer.Script;
+import com.variation4.dbviewer.ScriptFactiory;
 
 public class SelectAction extends ActionSupport {
 
@@ -24,6 +26,8 @@ public class SelectAction extends ActionSupport {
 	private List<Database> databaseList;
 
 	/** DIフィールド */
+	private List<String> scriptHolderList;
+
 	private List<Script> scriptList;
 
 	private String scriptId;
@@ -41,13 +45,26 @@ public class SelectAction extends ActionSupport {
 	}
 
 	/** DIフィールド */
-	public List<Script> getScriptList() {
-		return scriptList;
+	public void setScriptHolderList(List<String> scriptHolderList) {
+		this.scriptHolderList = scriptHolderList;
 	}
 
-	/** DIフィールド */
-	public void setScriptList(List<Script> scriptList) {
-		this.scriptList = scriptList;
+	// Tomcat起動だと、ClassUtils.loadClasses("sample.script")クラスが見つけられない。。;
+	// public List<Script> getScriptList() {
+	// if (scriptList == null) {
+	// scriptList = ScriptFactiory.loadScripts("sample.script");
+	// }
+	// return scriptList ;
+	// }
+
+	public List<Script> getScriptList() {
+		if (scriptList == null) {
+			scriptList = new ArrayList<Script>();
+			for (String className : scriptHolderList) {
+				scriptList.addAll(ScriptFactiory.loadScriptsFromClassName(className));
+			}
+		}
+		return scriptList;
 	}
 
 	public String getScriptId() {
@@ -68,12 +85,10 @@ public class SelectAction extends ActionSupport {
 
 	@Override
 	public String execute() {
-		System.out.println("call::execute()");
 		return SUCCESS;
 	}
 
 	public String query() {
-		System.out.println("call::query()");
 		Map<String, String> sqlParams = getSqlParams();
 		for (Entry<String, String> entry : sqlParams.entrySet()) {
 			System.out.println(entry);
