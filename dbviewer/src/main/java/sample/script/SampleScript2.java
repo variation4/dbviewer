@@ -6,11 +6,11 @@ import java.util.Map;
 
 import com.variation4.dbviewer.Command;
 import com.variation4.dbviewer.Database;
-import com.variation4.dbviewer.ScriptHelper;
+import com.variation4.dbviewer.DefaultScript;
 import com.variation4.dbviewer.ScriptHolder;
 
 @ScriptHolder
-public class SampleScript2 extends ScriptHelper {
+public class SampleScript2 extends DefaultScript {
 
 	public SampleScript2() {
 		super("サンプルスクリプト2");

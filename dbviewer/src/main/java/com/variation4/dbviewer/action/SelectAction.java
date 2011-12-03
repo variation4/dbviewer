@@ -14,6 +14,7 @@ import org.apache.struts2.ServletActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.variation4.dbviewer.Command;
 import com.variation4.dbviewer.Database;
+import com.variation4.dbviewer.ScliptList;
 import com.variation4.dbviewer.Script;
 import com.variation4.dbviewer.ScriptFactiory;
 
@@ -28,7 +29,7 @@ public class SelectAction extends ActionSupport {
 	/** DIフィールド */
 	private List<String> scriptHolderList;
 
-	private List<Script> scriptList;
+	private ScliptList scriptList ;
 
 	private String scriptId;
 
@@ -59,12 +60,12 @@ public class SelectAction extends ActionSupport {
 
 	public List<Script> getScriptList() {
 		if (scriptList == null) {
-			scriptList = new ArrayList<Script>();
+			scriptList = new ScliptList();
 			for (String className : scriptHolderList) {
 				scriptList.addAll(ScriptFactiory.loadScriptsFromClassName(className));
 			}
 		}
-		return scriptList;
+		return scriptList.getList();
 	}
 
 	public String getScriptId() {

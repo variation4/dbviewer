@@ -5,11 +5,14 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public abstract class ScriptHelper implements Script {
+/**
+ * Scriptの標準実装
+ */
+public abstract class DefaultScript implements Script {
 
 	private String caption;
 
-	public ScriptHelper(String caption) {
+	public DefaultScript(String caption) {
 		this.caption = caption;
 	}
 
